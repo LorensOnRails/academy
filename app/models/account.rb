@@ -4,9 +4,10 @@ class Account < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :confirmable, :validatable
 
-	protected
-	def confirmation_required?
-	  false
-	end
+  include ImageUploader.attachment(:image)
 
+  protected
+  def confirmation_required?
+	false
+  end
 end
