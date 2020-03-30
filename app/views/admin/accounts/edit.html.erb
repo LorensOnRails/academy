@@ -1,0 +1,119 @@
+<div class="row">
+  <%= render partial: 'layouts/admin_sidebar' %>
+  <div class="col-12 col-lg-10">
+    <div class="card">
+      <div class="card-header">
+        Edit User
+      </div>
+      <%= form_for([:admin,@account]) do |f| %>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label>User ID</label>
+                 <%= f.text_field :id, :id => "id", :class => "form-control" %>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" class="form-control" value="<%= @account.first_name %> <%= @account.last_name %>" disabled>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label>First Name</label>
+                   <%= f.text_field :first_name, :id => "first_name", :class => "form-control" %>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label>Last Name</label>
+                <%= f.text_field :last_name, :id => "last_name", :class => "form-control" %>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label>E-mail</label>
+                <%= f.text_field :email, :id => "email", :class => "form-control" %>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <hr>
+              <div class="form-group">
+                <label>Image Info</label>
+                <textarea rows="5" class="form-control" value="" disabled><%= @account.image_data %></textarea>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label>Created At</label>
+                  <input type="text" class="form-control" value="<%= @account.created_at %>" disabled>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label>Updated At</label>
+                  <input type="text" class="form-control" value="<%= @account.updated_at %>" disabled>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+              <label>Unconfirmed Email</label>
+                <%= f.text_field :unconfirmed_email, :id => "unconfirmed_email", :class => "form-control" %>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <hr>
+              <div class="form-group">
+                <label>Confirmed At</label>
+                  <input type="text" class="form-control" value="<%= @account.confirmed_at %>" disabled>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <hr>
+              <div class="form-group">
+                <label>Confirmation Email Sent At</label>
+                  <input type="text" class="form-control" value="<%= @account.confirmation_sent_at %>" disabled>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <hr>
+              <div class="form-group">
+                <label>Confirmation Token</label>
+                  <input type="text" class="form-control" value="<%= @account.confirmation_token %>" disabled>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="form-group">
+                <label>Image Info</label>
+                <% if @account.image.present? %>
+                <%= image_tag @account.image_url(:original), style: "width:10%;" %>
+                <% end %>
+                <textarea rows="5" class="form-control" value="" disabled><%= @account.image_data %></textarea>
+              </div>
+              <div class="form-group">
+                <label>Change Image?</label>
+                <%= f.file_field :image, class: 'form-control' %>
+              </div>
+            </div>
+          </div>
+          <span>
+            <%= link_to 'Back', admin_accounts_path, :class => 'btn btn-secondary' %>
+          </span>
+          <span>
+            <%= f.submit 'Update', :class => 'btn btn-primary' %>
+          </span>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
