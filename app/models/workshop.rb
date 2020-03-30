@@ -9,4 +9,6 @@ class Workshop < ApplicationRecord
   scope :published, -> { where(status: 'published') }
   scope :drafts, -> { where(status: 'draft') }
 
+  has_many :lessons
+
 end
