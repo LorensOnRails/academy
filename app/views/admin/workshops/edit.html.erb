@@ -101,6 +101,23 @@
                 <label>Change Image?</label>
                 <%= f.file_field :image, class: 'form-control' %>
               </div>
+               <div class="card">
+                <div class="card-body">
+                 <div class="card-header">
+                  <span style="padding-right: 5px;">Workshop Curriculum</span>
+                  <%= link_to 'Add Lesson', new_admin_workshop_lesson_path(@workshop), class: "btn btn-primary btn-sm my-10" %>
+                 </div>
+                 <div id="lessons" class="list-group" data-url="<%= sort_lessons_path %>">
+                  <% if @workshop.lessons.count == 0 %>
+                   <div class="list-group-item">No lessons for this workshop found. Please create one!</div>
+                  <% else %>
+                   <% @workshop.lessons.order(order: :asc).each_with_index do |lesson| %>
+                    <%= link_to lesson.title, edit_admin_workshop_lesson_path(@workshop, lesson), class: "list-group-item", id: dom_id(lesson) %>
+                   <% end %>
+                  <% end %>
+                 </div>
+                </div>
+               </div>
             </div>
           </div>
           <hr>
@@ -116,3 +133,18 @@
     </div>
   </div>
 </div>
+
+
+<script type="text/javascript">
+document.addEventListener("turbolinks:load", function() {
+ $("#lessons").sortable({
+  update: function(e, ui) {
+   Rails.ajax({
+    url: $(this).data("url"),
+    type: "PATCH",
+    data: $(this).sortable('serialize'),
+   });
+  }
+ });
+});
+</script>
