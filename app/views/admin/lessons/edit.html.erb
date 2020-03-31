@@ -42,11 +42,7 @@
               <hr>
             <div class="col-md-12">
               <div class="form-group">
-                <% if @lesson.video.present? %>
-                  <div>Video Info</div>
-                  <span><%= @lesson.video_data %></span>
-                  <br>
-                <% end %>
+
                 <br>
                 <div>Change video?</div>
                 <%= f.file_field :video, class: 'form-control' %>
