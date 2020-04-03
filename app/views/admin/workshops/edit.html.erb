@@ -134,14 +134,14 @@
   </div>
 </div>
 
-
 <script type="text/javascript">
-document.addEventListener("turbolinks:load", function() {
- $("#lessons").sortable({
-  update: function(e, ui) {
-   Rails.ajax({
+$(function() {
+ $('#lessons').sortable({
+  update: function( event, ui ) {
+   $.ajax({
+    type: 'PATCH',
     url: $(this).data("url"),
-    type: "PATCH",
+    dataType: 'json',
     data: $(this).sortable('serialize'),
    });
   }
