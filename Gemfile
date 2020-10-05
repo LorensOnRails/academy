@@ -29,7 +29,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise'
 # Gems needed for upload system
-gem 'shrine', '~> 2.8'
+gem 'shrine', '~> 3.3'
 gem 'fastimage', '~> 2.1', '>= 2.1.1'
 gem 'image_processing', '~> 0.4.5'
 gem "mini_magick", ">= 4.3.5"
