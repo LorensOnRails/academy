@@ -31,7 +31,7 @@ gem 'devise'
 # Gems needed for upload system
 gem 'shrine', '~> 2.8'
 gem 'fastimage', '~> 2.1', '>= 2.1.1'
-gem 'image_processing', '~> 0.4.5'
+gem 'image_processing', '~> 1.12.2'
 gem "mini_magick", ">= 4.3.5"
 
 group :development, :test do
